@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,13 +64,19 @@
     <Content Include="dist\css\chitu.css" />
     <Content Include="dist\css\ratchetPro.css" />
     <Content Include="dist\fonts\ratchicons.svg" />
+    <Content Include="dist\index.html" />
     <Content Include="dist\scripts\app-index.js" />
+    <Content Include="dist\scripts\react.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.json" />
     <Content Include="src\css\chitu.css" />
     <Content Include="src\css\ratchetPro.css" />
     <Content Include="src\fonts\ratchicons.svg" />
+    <Content Include="src\index.html" />
     <Content Include="src\scripts\app-index.js" />
+    <Content Include="src\scripts\ratchetPro.js" />
+    <Content Include="src\scripts\react-dom.js" />
+    <Content Include="src\scripts\react.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\images\" />
