@@ -13,9 +13,14 @@
     background-color: rgb(235, 235, 235);
 }
 
+.feed-list {
+    margin-top: 20px;
+}
+
 .feed {
     background-color: white;
-    box-shadow:  0px 1px 2px rgba(172, 172, 172, 0.75);
+    box-shadow: 0px 1px 2px rgba(172, 172, 172, 0.75);
+    margin-bottom: 20px;
 }
 
     .feed .feed-main {
@@ -28,6 +33,12 @@
 
 .feed-profile-avatar img {
     border-radius: 50%;
+    width: 42px;
+    height: 42px;
+}
+
+.feed-profile-data {
+    margin-left: 10px;
 }
 
 .feed-profile-name {
@@ -65,6 +76,6 @@
             display: inline;
         }
 
-.footer-wrapper .bar{
+.footer-wrapper .bar {
     height: 60px;
 }

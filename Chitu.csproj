@@ -78,6 +78,7 @@
     <Content Include="src\scripts\app-people.js" />
     <Content Include="src\scripts\app-index.js" />
     <Content Include="src\scripts\components.js" />
+    <Content Include="src\scripts\jquery.js" />
     <Content Include="src\scripts\ratchetPro.js" />
     <Content Include="src\scripts\react-dom.js" />
     <Content Include="src\scripts\react.js" />
@@ -94,6 +95,9 @@
     <Content Include="dist\fonts\ratchicons.eot" />
     <Content Include="dist\fonts\ratchicons.ttf" />
     <Content Include="dist\fonts\ratchicons.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\data\feed.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
