@@ -2,6 +2,27 @@
     font-family: 'Microsoft YaHei';
 }
 
+.hide {
+    display: none;
+}
+
+.bar-tab .tab-item.active {
+    color: rgb(57, 191, 158);
+}
+
+header.bar {
+    background-color: rgb(57, 191, 158);
+    color: white;
+}
+
+    header.bar h1 {
+        color: white;
+    }
+
+    header.bar .icon {
+        color: white;
+    }
+
 .title {
     width: auto;
     left: 30px;

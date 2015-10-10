@@ -6,12 +6,12 @@
         window.RATCHET.getScript('scripts/jquery.js', function () {
             window.RATCHET.getScript('scripts/components.js', function () {
                 var headerBarData = {
-                    title: '赤兔',
-                    iconClassName: 'icon-compose'
+                    title: '发现',
+                    iconClassName: 'icon-search'
                 };
 
                 var footerBarData = {
-                    activeIndex: 0
+                    activeIndex: 3
                 };
 
                 var feedListData = {
@@ -20,7 +20,6 @@
 
                 ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar, headerBarData), document.querySelector('.header-wrapper'));
                 ReactDOM.render(React.createElement(window.Chitu.Component.FooterBar, footerBarData), document.querySelector('.footer-wrapper'));
-                ReactDOM.render(React.createElement(window.Chitu.Component.FeedList, feedListData), document.querySelector('.feed-list-wrapper'));
             }, function () {
                 alert('好像出错了呀，刷新重来一次吧');
             });

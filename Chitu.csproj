@@ -71,11 +71,17 @@
     <Content Include="package.json" />
     <Content Include="src\css\chitu.css" />
     <Content Include="src\css\ratchetPro.css" />
+    <Content Include="src\me.html" />
     <Content Include="src\fonts\ratchicons.svg" />
     <Content Include="src\images\profile\p0.jpg" />
     <Content Include="src\images\profile\p1.jpg" />
+    <Content Include="src\explore.html" />
+    <Content Include="src\message.html" />
     <Content Include="src\people.html" />
     <Content Include="src\index.html" />
+    <Content Include="src\scripts\app-me.js" />
+    <Content Include="src\scripts\app-explore.js" />
+    <Content Include="src\scripts\app-message.js" />
     <Content Include="src\scripts\app-people.js" />
     <Content Include="src\scripts\app-index.js" />
     <Content Include="src\scripts\components.js" />

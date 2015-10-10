@@ -48,6 +48,52 @@
         }
     });
 
+    window.Chitu.Component.FooterBar = React.createClass({
+        displayName: 'FooterBar',
+
+        render: function () {
+            var actionBarData = {
+                data: [{
+                    key: 0,
+                    iconClassName: 'icon-home',
+                    tabText: '赤兔',
+                    isActive: false,
+                    url: 'index.html'
+                }, {
+                    key: 1,
+                    iconClassName: 'icon-star-filled',
+                    tabText: '人脉',
+                    isActive: false,
+                    url: 'people.html'
+                }, {
+                    key: 2,
+                    iconClassName: 'icon-info',
+                    tabText: '消息',
+                    isActive: false,
+                    url: 'message.html'
+                }, {
+                    key: 3,
+                    iconClassName: 'icon-search',
+                    tabText: '发现',
+                    isActive: false,
+                    url: 'explore.html'
+                }, {
+                    key: 4,
+                    iconClassName: 'icon-person',
+                    tabText: '我',
+                    isActive: false,
+                    url: 'me.html'
+                }]
+            };
+
+            var activeIndex = this.props.activeIndex;
+            actionBarData.data[activeIndex].isActive = true;
+
+            return React.createElement(window.Chitu.Component.ActionBar, actionBarData);
+        }
+    });
+
+
     window.Chitu.Component.ImageTextTab = React.createClass({
         displayName: 'ImageTextTab',
 
