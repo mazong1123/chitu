@@ -72,15 +72,18 @@
     <Content Include="src\css\chitu.css" />
     <Content Include="src\css\ratchetPro.css" />
     <Content Include="src\fonts\ratchicons.svg" />
+    <Content Include="src\images\profile\p0.jpg" />
+    <Content Include="src\people.html" />
     <Content Include="src\index.html" />
+    <Content Include="src\scripts\app-people.js" />
     <Content Include="src\scripts\app-index.js" />
+    <Content Include="src\scripts\components.js" />
     <Content Include="src\scripts\ratchetPro.js" />
     <Content Include="src\scripts\react-dom.js" />
     <Content Include="src\scripts\react.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\images\" />
-    <Folder Include="src\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\fonts\ratchicons.eot" />

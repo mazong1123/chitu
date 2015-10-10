@@ -5,8 +5,8 @@
     rachetPageManager.ready(function () {
         window.RATCHET.getScript('scripts/components.js', function () {
             var headerBarData = {
-                title: '赤兔',
-                iconClassName: 'icon-compose'
+                title: '人脉',
+                iconClassName: 'icon-person'
             };
 
             var footerBarData = {
@@ -14,14 +14,14 @@
                     key: 0,
                     iconClassName: 'icon-home',
                     tabText: '赤兔',
-                    isActive: true,
-                    url: '#'
+                    isActive: false,
+                    url: 'index.html'
                 }, {
                     key: 1,
                     iconClassName: 'icon-star-filled',
                     tabText: '人脉',
-                    isActive: false,
-                    url: 'people.html'
+                    isActive: true,
+                    url: '#'
                 }, {
                     key: 2,
                     iconClassName: 'icon-info',
@@ -43,30 +43,7 @@
                 }]
             };
 
-            var feedActionsData = {
-                data: [{
-                    key: 0,
-                    iconClassName: 'icon-home',
-                    tabText: '0',
-                    isActive: false,
-                    url: '#'
-                }, {
-                    key: 1,
-                    iconClassName: 'icon-star-filled',
-                    tabText: '2',
-                    isActive: false,
-                    url: '#'
-                }, {
-                    key: 2,
-                    iconClassName: 'icon-info',
-                    tabText: '0',
-                    isActive: false,
-                    url: '#'
-                }]
-            };
-
             ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar, headerBarData), document.querySelector('.header-wrapper'));
-            ReactDOM.render(React.createElement(window.Chitu.Component.ActionBar, feedActionsData), document.querySelector('.feed-actions'));
             ReactDOM.render(React.createElement(window.Chitu.Component.ActionBar, footerBarData), document.querySelector('.footer-wrapper'));
         }, function () {
             alert('好像出错了呀，刷新重来一次吧');
