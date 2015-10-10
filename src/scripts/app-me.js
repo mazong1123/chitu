@@ -14,10 +14,6 @@
                     activeIndex: 4
                 };
 
-                var feedListData = {
-                    url: 'data/feed.json'
-                };
-
                 ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar, headerBarData), document.querySelector('.header-wrapper'));
                 ReactDOM.render(React.createElement(window.Chitu.Component.FooterBar, footerBarData), document.querySelector('.footer-wrapper'));
             }, function () {
