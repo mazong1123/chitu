@@ -73,6 +73,7 @@
     <Content Include="src\css\ratchetPro.css" />
     <Content Include="src\fonts\ratchicons.svg" />
     <Content Include="src\images\profile\p0.jpg" />
+    <Content Include="src\images\profile\p1.jpg" />
     <Content Include="src\people.html" />
     <Content Include="src\index.html" />
     <Content Include="src\scripts\app-people.js" />

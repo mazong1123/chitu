@@ -124,12 +124,16 @@
     window.Chitu.Component.FeedContent = React.createClass({
         displayName: 'FeedContent',
 
+        createMarkup: function (text) {
+            return { __html: text };
+        },
+
         render: function () {
-            var textContent = this.props.textContent;
+            var textContent = this.createMarkup(this.props.textContent);
 
             return React.createElement('div', {
                 className: 'feed-content'
-            }, React.createElement('p', {}, textContent));
+            }, React.createElement('p', { dangerouslySetInnerHTML: textContent }));
         }
     });
 
@@ -181,6 +185,18 @@
             var feedComponents = this.state.data.map(function (feedData) {
                 // Reactjs needs 'key' for array data.
                 feedData.key = feedData.id;
+
+                // Append UI data.
+                var feedActionData = feedData.feedActionsData.data;
+                var iconClassList = ['icon-home', 'icon-star-filled', 'icon-info'];
+                for (var i = 0; i < 3; i++) {
+                    var fad = feedActionData[i];
+                    fad.key = fad.id;
+                    fad.iconClassName = iconClassList[i];
+                    fad.isActive = false;
+                    fad.url = '#';
+                    fad.tabText = fad.count;
+                }
 
                 var feedComponent = React.createElement(window.Chitu.Component.Feed, feedData);
 
