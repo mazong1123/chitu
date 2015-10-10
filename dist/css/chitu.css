@@ -6,4 +6,4 @@
  *
  * v1.0.0 designed by @mazong1123.
  * =============================================================
- */body{font-family:'Microsoft YaHei'}.title{width:auto;left:30px}
+ */body{font-family:'Microsoft YaHei'}.hide{display:none}.bar-tab .tab-item.active{color:#39bf9e}header.bar,header.bar .icon,header.bar h1{color:#fff}header.bar{background-color:#39bf9e}.title{width:auto;left:30px}.content{padding-top:44px;padding-bottom:60px;background-color:#ebebeb}.feed-list{margin-top:20px}.feed{background-color:#fff;box-shadow:0 1px 2px rgba(172,172,172,.75);margin-bottom:20px}.feed .feed-main{padding:20px}.feed .feed-main .feed-header{height:60px}.feed-profile-avatar img{border-radius:50%;width:42px;height:42px}.feed-profile-data{margin-left:10px}.feed-profile-name{font-size:14px;font-weight:700}.feed-profile-title,.feed-time{color:#868686;font-size:12px}.feed-content{clear:both}.feed-content p{color:#2d2d2d}.feed-actions{height:51px}.feed-actions .bar{position:relative}.feed-actions .bar .tab-item .tab-label{display:inline}.footer-wrapper .bar{height:60px}
