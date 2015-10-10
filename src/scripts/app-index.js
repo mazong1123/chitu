@@ -1,6 +1,9 @@
 ﻿(function () {
     'use strict'
 
+    // Omit header/footer to prevent header/footer ugly refershing during page switching.
+    window.RATCHET.Class.Pusher.settings.omitBars = true;
+
     var rachetPageManager = new window.RATCHET.Class.PageManager();
     rachetPageManager.ready(function () {
         window.RATCHET.getScript('scripts/jquery.js', function () {
