@@ -71,7 +71,15 @@
     <Content Include="dist\me.html" />
     <Content Include="dist\message.html" />
     <Content Include="dist\people.html" />
+    <Content Include="dist\scripts\app-explore.js" />
     <Content Include="dist\scripts\app-index.js" />
+    <Content Include="dist\scripts\app-me.js" />
+    <Content Include="dist\scripts\app-message.js" />
+    <Content Include="dist\scripts\app-people.js" />
+    <Content Include="dist\scripts\components.js" />
+    <Content Include="dist\scripts\jquery.js" />
+    <Content Include="dist\scripts\ratchetPro.js" />
+    <Content Include="dist\scripts\react-dom.js" />
     <Content Include="dist\scripts\react.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.json" />
