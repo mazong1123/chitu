@@ -42,9 +42,28 @@
                 return tabComponent;
             });
 
+            var customClass = this.props.customClass;
+            if (customClass === undefined || customClass === null) {
+                customClass = '';
+            }
+            else {
+                customClass = ' ' + customClass;
+            }
+
             return React.createElement('nav', {
-                className: 'bar bar-tab'
+                className: 'bar bar-tab' + customClass
             }, tabElements);
+        }
+    });
+
+    window.Chitu.Component.BigActionBar = React.createClass({
+        displayName: 'BigActionBar',
+
+        render: function () {
+            var props = this.props;
+            props.customClass = 'big';
+
+            return React.createElement(window.Chitu.Component.ActionBar, props);
         }
     });
 
@@ -105,16 +124,35 @@
                 activeClass = ' active';
             }
 
+            var customClass = this.props.customClass;
+            if (customClass === undefined || customClass === null) {
+                customClass = '';
+            }
+            else {
+                customClass = ' ' + customClass;
+            }
+
             var url = this.props.url;
 
             return React.createElement('a', {
-                className: 'tab-item' + activeClass,
+                className: 'tab-item' + activeClass + customClass,
                 href: url
             }, React.createElement('span', {
                 className: 'icon' + iconClassName
             }), React.createElement('span', {
                 className: 'tab-label'
             }, tabText));
+        }
+    });
+
+    window.Chitu.Component.BigImageTextTab = React.createClass({
+        displayName: 'BigImageTextTab',
+
+        render: function () {
+            var props = this.props;
+            props.customClass = 'big';
+
+            return React.createElement(window.Chitu.Component.ImageTextTab, props);
         }
     });
 
