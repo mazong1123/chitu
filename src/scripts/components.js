@@ -203,6 +203,41 @@
         }
     });
 
+    window.Chitu.Component.SegmentedControl = React.createClass({
+        displayName: 'SegmentedControl',
+
+        render: function () {
+            var controlItemElements = this.props.data.map(function (controlItemData) {
+                var name = controlItemData.name;
+                var activeClass = controlItemData.isActive ? ' active' : '';
+                var targetId = controlItemData.targetId;
+                var targetActiveClass = controlItemData.targetIsActive ? ' active' : '';
+
+                var controlItemComponent = React.createElement('a', {
+                    className: 'control-item' + activeClass,
+                    href: '#' + targetId,
+                    key: controlItemData.id
+                }, name);
+
+                // Intiailize target element.
+                var targetElement = document.getElementById(targetId);
+                if (targetElement !== null && targetElement !== undefined) {
+                    var originalClassName = targetElement.className;
+                    targetElement.className = 'control-content' + targetActiveClass;
+                    if (originalClassName !== null && originalClassName !== undefined && originalClassName.length > 0) {
+                        targetElement.className += originalClassName;
+                    }
+                }
+
+                return controlItemComponent;
+            });
+
+            return React.createElement('div', {
+                className: 'segmented-control'
+            }, controlItemElements);
+        }
+    });
+
     window.Chitu.Component.FeedList = React.createClass({
         displayName: 'FeedList',
 

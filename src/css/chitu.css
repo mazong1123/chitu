@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: 'Microsoft YaHei';
+    font-family: 'Microsoft YaHei', 'Microsoft YaHei UI';
 }
 
 .hide {
@@ -100,3 +100,20 @@ header.bar {
 .footer-wrapper .bar {
     height: 60px;
 }
+
+.segmented-control {
+    height: 50px;
+}
+
+    .segmented-control .control-item {
+        vertical-align: middle;
+        border: none;
+    }
+
+        .segmented-control .control-item.active {
+            background: none;
+            color: rgb(57, 172, 123);
+            border-bottom-color: rgb(57, 172, 123);
+            border-bottom-width: 1px;
+            border-bottom: solid;
+        }
