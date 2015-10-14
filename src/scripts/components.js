@@ -382,11 +382,13 @@
         }
     });
 
-    window.Chitu.Component.SegmentedControl = React.createClass({
-        displayName: 'SegmentedControl',
+    window.Chitu.Definition.SegmentedControl = window.ReactOO.ReactBase.extend({
+        getReactDisplayName: function () {
+            return 'SegmentedControl';
+        },
 
-        render: function () {
-            var controlItemElements = this.props.data.map(function (controlItemData) {
+        onReactRender: function (reactInstance) {
+            var controlItemElements = reactInstance.props.data.map(function (controlItemData) {
                 var name = controlItemData.name;
                 var activeClass = controlItemData.isActive ? ' active' : '';
                 var targetId = controlItemData.targetId;
@@ -423,4 +425,5 @@
     window.Chitu.Component.ActionBar = new window.Chitu.Definition.ActionBar();
     window.Chitu.Component.BigActionBar = new window.Chitu.Definition.BigActionBar();
     window.Chitu.Component.FeedList = new window.Chitu.Definition.FeedList();
+    window.Chitu.Component.SegmentedControl = new window.Chitu.Definition.SegmentedControl();
 })();

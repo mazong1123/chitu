@@ -36,7 +36,7 @@
                     }]
                 };
 
-                ReactDOM.render(React.createElement(window.Chitu.Component.SegmentedControl, subPageSegementedControlData), document.querySelector('.subpage-selector-wrapper'));
+                window.Chitu.Component.SegmentedControl.render(subPageSegementedControlData, '.subpage-selector-wrapper');
                 window.Chitu.Component.HeaderBar.render(headerBarData, '.header-wrapper');
                 window.Chitu.Component.FooterBar.render(footerBarData, '.footer-wrapper');
 
