@@ -21,9 +21,9 @@
                     url: 'data/feed.json'
                 };
 
-                ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar, headerBarData), document.querySelector('.header-wrapper'));
-                ReactDOM.render(React.createElement(window.Chitu.Component.FooterBar, footerBarData), document.querySelector('.footer-wrapper'));
-                ReactDOM.render(React.createElement(window.Chitu.Component.FeedList, feedListData), document.querySelector('.feed-list-wrapper'));
+                window.Chitu.Component.HeaderBar.render(headerBarData, '.header-wrapper');
+                window.Chitu.Component.FooterBar.render(footerBarData, '.footer-wrapper');
+                window.Chitu.Component.FeedList.render(feedListData, '.feed-list-wrapper');
             }, function () {
                 alert('好像出错了呀，刷新重来一次吧');
             });

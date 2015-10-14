@@ -7,4 +7,4 @@
  * v1.0.0 designed by @mazong1123.
  * =============================================================
  */
-!function(){"use strict";var a=new window.RATCHET.Class.PageManager;a.ready(function(){window.RATCHET.getScript("scripts/jquery.js",function(){window.RATCHET.getScript("scripts/components.js",function(){var a={title:"发现",iconClassName:"icon-search"},b={activeIndex:3};ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar,a),document.querySelector(".header-wrapper")),ReactDOM.render(React.createElement(window.Chitu.Component.FooterBar,b),document.querySelector(".footer-wrapper"))},function(){alert("好像出错了呀，刷新重来一次吧")})},function(){alert("好像出错了呀，刷新重来一次吧")})})}();
+!function(){"use strict";var a=new window.RATCHET.Class.PageManager;a.ready(function(){window.RATCHET.getScript("scripts/jquery.js",function(){window.RATCHET.getScript("scripts/components.js",function(){var a={title:"发现",iconClassName:"icon-search"},b={activeIndex:3};window.Chitu.Component.HeaderBar.render(a,".header-wrapper"),window.Chitu.Component.FooterBar.render(b,".footer-wrapper")},function(){alert("好像出错了呀，刷新重来一次吧")})},function(){alert("好像出错了呀，刷新重来一次吧")})})}();

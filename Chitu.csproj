@@ -81,6 +81,7 @@
     <Content Include="dist\scripts\ratchetPro.js" />
     <Content Include="dist\scripts\react-dom.js" />
     <Content Include="dist\scripts\react.js" />
+    <Content Include="dist\scripts\reactOO.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.json" />
     <Content Include="src\css\chitu.css" />
@@ -103,6 +104,7 @@
     <Content Include="src\scripts\ratchetPro.js" />
     <Content Include="src\scripts\react-dom.js" />
     <Content Include="src\scripts\react.js" />
+    <Content Include="src\scripts\reactOO.js" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

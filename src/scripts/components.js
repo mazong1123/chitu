@@ -5,6 +5,10 @@
         window.Chitu = {};
     }
 
+    if (typeof window.Chitu.Definition === 'undefined') {
+        window.Chitu.Definition = {};
+    }
+
     if (typeof window.Chitu.Component === 'undefined') {
         window.Chitu.Component = {};
     }
@@ -13,12 +17,14 @@
         window.Chitu.Component.Utility = {};
     }
 
-    window.Chitu.Component.HeaderBar = React.createClass({
-        displayName: 'HeaderBar',
+    window.Chitu.Definition.HeaderBar = window.ReactOO.ReactBase.extend({
+        getReactDisplayName: function () {
+            return 'HeaderBar';
+        },
 
-        render: function () {
-            var title = this.props.title;
-            var iconClassName = this.props.iconClassName;
+        onReactRender: function (reactInstance) {
+            var title = reactInstance.props.title;
+            var iconClassName = reactInstance.props.iconClassName;
 
             return React.createElement('header', {
                 className: 'bar bar-nav'
@@ -32,45 +38,130 @@
         }
     });
 
-    window.Chitu.Component.ActionBar = React.createClass({
-        displayName: 'ActionBar',
+    window.Chitu.Definition.ActionBar = window.ReactOO.ReactBase.extend({
+        init: function () {
+            var self = this;
+            self._super();
 
-        render: function () {
-            var tabElements = this.props.data.map(function (tabData) {
-                var tabComponent = React.createElement(window.Chitu.Component.ImageTextTab, tabData);
+            self.imageTextTab = new window.Chitu.Definition.ImageTextTab();
+        },
+
+        getClassName: function(){
+            return 'bar bar-tab';
+        },
+
+        getReactDisplayName: function () {
+            return 'ActionBar';
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var tabElements = reactInstance.props.data.map(function (tabData) {
+                var tabComponent = React.createElement(self.imageTextTab.getReactComponent(), tabData);
 
                 return tabComponent;
             });
 
-            var customClass = this.props.customClass;
-            if (customClass === undefined || customClass === null) {
-                customClass = '';
-            }
-            else {
-                customClass = ' ' + customClass;
-            }
-
             return React.createElement('nav', {
-                className: 'bar bar-tab' + customClass
+                className: self.getClassName()
             }, tabElements);
         }
     });
 
-    window.Chitu.Component.BigActionBar = React.createClass({
-        displayName: 'BigActionBar',
+    window.Chitu.Definition.BigActionBar = window.Chitu.Definition.ActionBar.extend({
+        init: function () {
+            var self = this;
+            self._super();
+        },
 
-        render: function () {
-            var props = this.props;
-            props.customClass = 'big';
+        getClassName: function () {
+            var self = this;
+            var baseClassName = self._super();
 
-            return React.createElement(window.Chitu.Component.ActionBar, props);
+            var className = baseClassName + ' big';
+
+            return className;
+        },
+
+        getReactDisplayName: function () {
+            return 'BigActionBar';
         }
     });
 
-    window.Chitu.Component.FooterBar = React.createClass({
-        displayName: 'FooterBar',
+    window.Chitu.Definition.ImageTextTab = window.ReactOO.ReactBase.extend({
+        init: function () {
+            var self = this;
+            self._super();
+        },
 
-        render: function () {
+        getContainerClassName: function (isActive) {
+            var tabClass = 'tab-item';
+            if (isActive) {
+                tabClass += ' active';
+            }
+
+            return tabClass;
+        },
+
+        getIconClassName: function (iconClass) {
+            var iconClassName = 'icon' + ' ' + iconClass;
+
+            return iconClassName;
+        },
+
+        getReactDisplayName: function () {
+            return 'ImageTextTab';
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var iconClass = reactInstance.props.iconClassName;
+            var tabText = reactInstance.props.tabText;
+            var isActive = reactInstance.props.isActive;
+            var url = reactInstance.props.url;
+
+            var containerClassName = self.getContainerClassName(isActive);
+            var iconClassName = self.getIconClassName(iconClass);
+
+            return React.createElement('a', {
+                className: containerClassName,
+                href: url
+            }, React.createElement('span', {
+                className: iconClassName
+            }), React.createElement('span', {
+                className: 'tab-label'
+            }, tabText));
+        }
+    });
+
+    window.Chitu.Definition.BigImageTextTab = window.Chitu.Definition.ImageTextTab.extend({
+        getContainerClassName: function (isActive) {
+            var tabClass = 'tab-item big';
+            if (isActive) {
+                tabClass += ' active';
+            }
+
+            return tabClass;
+        }
+    });
+
+    window.Chitu.Definition.FooterBar = window.ReactOO.ReactBase.extend({
+        init: function () {
+            var self = this;
+            self._super();
+
+            self.actionBar = new window.Chitu.Definition.ActionBar();
+        },
+
+        getReactDisplayName: function () {
+            return 'ImageTextTab';
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
             var actionBarData = {
                 data: [{
                     key: 0,
@@ -105,64 +196,22 @@
                 }]
             };
 
-            var activeIndex = this.props.activeIndex;
+            var activeIndex = reactInstance.props.activeIndex;
             actionBarData.data[activeIndex].isActive = true;
 
-            return React.createElement(window.Chitu.Component.ActionBar, actionBarData);
+            return React.createElement(self.actionBar.getReactComponent(), actionBarData);
         }
     });
 
+    window.Chitu.Definition.Profile = window.ReactOO.ReactBase.extend({
+        getReactDisplayName: function () {
+            return 'Profile';
+        },
 
-    window.Chitu.Component.ImageTextTab = React.createClass({
-        displayName: 'ImageTextTab',
-
-        render: function () {
-            var iconClassName = ' ' + this.props.iconClassName;
-            var tabText = this.props.tabText;
-            var activeClass = '';
-            if (this.props.isActive) {
-                activeClass = ' active';
-            }
-
-            var customClass = this.props.customClass;
-            if (customClass === undefined || customClass === null) {
-                customClass = '';
-            }
-            else {
-                customClass = ' ' + customClass;
-            }
-
-            var url = this.props.url;
-
-            return React.createElement('a', {
-                className: 'tab-item' + activeClass + customClass,
-                href: url
-            }, React.createElement('span', {
-                className: 'icon' + iconClassName
-            }), React.createElement('span', {
-                className: 'tab-label'
-            }, tabText));
-        }
-    });
-
-    window.Chitu.Component.BigImageTextTab = React.createClass({
-        displayName: 'BigImageTextTab',
-
-        render: function () {
-            var props = this.props;
-            props.customClass = 'big';
-
-            return React.createElement(window.Chitu.Component.ImageTextTab, props);
-        }
-    });
-
-    window.Chitu.Component.Profile = React.createClass({
-        displayName: 'Profile',
-
-        render: function () {
-            var avatar = this.props.avatar;
-            var name = this.props.name;
-            var title = this.props.title;
+        onReactRender: function (reactInstance) {
+            var avatar = reactInstance.props.avatar;
+            var name = reactInstance.props.name;
+            var title = reactInstance.props.title;
 
             return React.createElement('div', {
                 className: 'pull-left feed-profile'
@@ -181,14 +230,25 @@
         }
     });
 
-    window.Chitu.Component.FeedHeader = React.createClass({
-        displayName: 'FeedHeader',
+    window.Chitu.Definition.FeedHeader = window.ReactOO.ReactBase.extend({
+        init: function () {
+            var self = this;
+            self._super();
 
-        render: function () {
-            var avatar = this.props.avatar;
-            var name = this.props.name;
-            var title = this.props.title;
-            var time = this.props.time;
+            self.profile = new window.Chitu.Definition.Profile();
+        },
+
+        getReactDisplayName: function () {
+            return 'FeedHeader';
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var avatar = reactInstance.props.avatar;
+            var name = reactInstance.props.name;
+            var title = reactInstance.props.title;
+            var time = reactInstance.props.time;
 
             var profileData = {
                 avatar: avatar,
@@ -198,22 +258,26 @@
 
             return React.createElement('div', {
                 className: 'feed-header'
-            }, React.createElement(window.Chitu.Component.Profile, profileData),
+            }, React.createElement(self.profile.getReactComponent(), profileData),
             React.createElement('div', {
                 className: 'pull-right feed-time'
             }, time));
         }
     });
 
-    window.Chitu.Component.FeedContent = React.createClass({
-        displayName: 'FeedContent',
+    window.Chitu.Definition.FeedContent = window.ReactOO.ReactBase.extend({
+        getReactDisplayName: function () {
+            return 'FeedContent'
+        },
 
         createMarkup: function (text) {
             return { __html: text };
         },
 
-        render: function () {
-            var textContent = this.createMarkup(this.props.textContent);
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var textContent = self.createMarkup(reactInstance.props.textContent);
 
             return React.createElement('div', {
                 className: 'feed-content'
@@ -221,23 +285,100 @@
         }
     });
 
-    window.Chitu.Component.Feed = React.createClass({
-        displayName: 'Feed',
+    window.Chitu.Definition.Feed = window.ReactOO.ReactBase.extend({
+        init: function(){
+            var self = this;
+            self._super();
 
-        render: function () {
-            var profileHeaderData = this.props.profileHeaderData;
-            var feedContentData = this.props.feedContentData;
-            var feedActionsData = this.props.feedActionsData;
+            self.feedHeader = new window.Chitu.Definition.FeedHeader();
+            self.feedContent = new window.Chitu.Definition.FeedContent();
+            self.actionBar = new window.Chitu.Definition.ActionBar();
+        },
+
+        getReactDisplayName: function () {
+            return 'Feed';
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var profileHeaderData = reactInstance.props.profileHeaderData;
+            var feedContentData = reactInstance.props.feedContentData;
+            var feedActionsData = reactInstance.props.feedActionsData;
 
             return React.createElement('div', {
                 className: 'feed'
             }, React.createElement('div', {
                 className: 'feed-main'
-            }, React.createElement(window.Chitu.Component.FeedHeader, profileHeaderData),
-            React.createElement(window.Chitu.Component.FeedContent, feedContentData)
+            }, React.createElement(self.feedHeader.getReactComponent(), profileHeaderData),
+            React.createElement(self.feedContent.getReactComponent(), feedContentData)
             ), React.createElement('div', {
                 className: 'feed-actions'
-            }, React.createElement(window.Chitu.Component.ActionBar, feedActionsData)));
+            }, React.createElement(self.actionBar.getReactComponent(), feedActionsData)));
+        }
+    });
+
+    window.Chitu.Definition.FeedList = window.ReactOO.ReactBase.extend({
+        init: function(){
+            var self = this;
+            self._super();
+
+            self.feed = new window.Chitu.Definition.Feed();
+        },
+
+        getReactDisplayName: function () {
+            return 'FeedList';
+        },
+
+        onReactGetInitialState: function (reactInstance) {
+            return {
+                data: []
+            };
+        },
+
+        onReactComponentDidMount: function (reactInstance) {
+            $.ajax({
+                url: reactInstance.props.url,
+                dataType: 'json',
+                cache: false,
+                success: function (result) {
+                    reactInstance.setState({
+                        data: result.data
+                    });
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    console.error(reactInstance.props.url, status, err.toString());
+                }.bind(reactInstance)
+            });
+        },
+
+        onReactRender: function (reactInstance) {
+            var self = this;
+
+            var feedComponents = reactInstance.state.data.map(function (feedData) {
+                // Reactjs needs 'key' for array data.
+                feedData.key = feedData.id;
+
+                // Append UI data.
+                var feedActionData = feedData.feedActionsData.data;
+                var iconClassList = ['icon-home', 'icon-star-filled', 'icon-info'];
+                for (var i = 0; i < 3; i++) {
+                    var fad = feedActionData[i];
+                    fad.key = fad.id;
+                    fad.iconClassName = iconClassList[i];
+                    fad.isActive = false;
+                    fad.url = '#';
+                    fad.tabText = fad.count;
+                }
+
+                var feedComponent = React.createElement(self.feed.getReactComponent(), feedData);
+
+                return feedComponent;
+            });
+
+            return React.createElement('div', {
+                className: 'feed-list'
+            }, feedComponents);
         }
     });
 
@@ -276,55 +417,10 @@
         }
     });
 
-    window.Chitu.Component.FeedList = React.createClass({
-        displayName: 'FeedList',
-
-        getInitialState: function () {
-            return {
-                data: []
-            };
-        },
-        componentDidMount: function () {
-            $.ajax({
-                url: this.props.url,
-                dataType: 'json',
-                cache: false,
-                success: function (result) {
-                    this.setState({
-                        data: result.data
-                    });
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    console.error(this.props.url, status, err.toString());
-                }.bind(this)
-            });
-        },
-
-        render: function () {
-            var feedComponents = this.state.data.map(function (feedData) {
-                // Reactjs needs 'key' for array data.
-                feedData.key = feedData.id;
-
-                // Append UI data.
-                var feedActionData = feedData.feedActionsData.data;
-                var iconClassList = ['icon-home', 'icon-star-filled', 'icon-info'];
-                for (var i = 0; i < 3; i++) {
-                    var fad = feedActionData[i];
-                    fad.key = fad.id;
-                    fad.iconClassName = iconClassList[i];
-                    fad.isActive = false;
-                    fad.url = '#';
-                    fad.tabText = fad.count;
-                }
-
-                var feedComponent = React.createElement(window.Chitu.Component.Feed, feedData);
-
-                return feedComponent;
-            });
-
-            return React.createElement('div', {
-                className: 'feed-list'
-            }, feedComponents);
-        }
-    });
+    // Global component instances.
+    window.Chitu.Component.HeaderBar = new window.Chitu.Definition.HeaderBar();
+    window.Chitu.Component.FooterBar = new window.Chitu.Definition.FooterBar();
+    window.Chitu.Component.ActionBar = new window.Chitu.Definition.ActionBar();
+    window.Chitu.Component.BigActionBar = new window.Chitu.Definition.BigActionBar();
+    window.Chitu.Component.FeedList = new window.Chitu.Definition.FeedList();
 })();

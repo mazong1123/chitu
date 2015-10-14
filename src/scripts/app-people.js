@@ -37,8 +37,8 @@
                 };
 
                 ReactDOM.render(React.createElement(window.Chitu.Component.SegmentedControl, subPageSegementedControlData), document.querySelector('.subpage-selector-wrapper'));
-                ReactDOM.render(React.createElement(window.Chitu.Component.HeaderBar, headerBarData), document.querySelector('.header-wrapper'));
-                ReactDOM.render(React.createElement(window.Chitu.Component.FooterBar, footerBarData), document.querySelector('.footer-wrapper'));
+                window.Chitu.Component.HeaderBar.render(headerBarData, '.header-wrapper');
+                window.Chitu.Component.FooterBar.render(footerBarData, '.footer-wrapper');
 
                 // We created ratchetPro's complex components(segmented control) programmatically, call populateComponets() to tell ratchetPro.
                 rachetPageManager.populateComponents();
